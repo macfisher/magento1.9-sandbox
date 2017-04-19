@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Mdg_Giftregistry>
+			<version>0.1.0</version>
+		</Mdg_Giftregistry>
+	</modules>
+	<global>
+		<models>
+			<mdg_giftregistry>
+				<class>Mdg_Giftregistry_Model</class>
+			</mdg_giftregistry>
+		</models>
+		<blocks>
+			<mdg_giftregistry>
+				<class>Mdg_Giftregistry_Block</class>
+			</mdg_giftregistry>
+		</blocks>
+		<helpers>
+			<mdg_giftregistry>
+				<class>Mdg_Giftregistry_Helper</class>
+			</mdg_giftregistry>
+		</helpers>
+		<resources>
+			<mdg_giftregistry_setup>
+				<setup>
+					<module>Mdg_Giftregistry</module>
+				</setup>
+			</mdg_giftregistry_setup>
+		</resources>
+	</global>
+</config>
