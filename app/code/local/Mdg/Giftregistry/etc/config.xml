@@ -9,7 +9,20 @@
 		<models>
 			<mdg_giftregistry>
 				<class>Mdg_Giftregistry_Model</class>
+				<resourceModel>mdg_giftregistry_mysql4</resourceModel>
 			</mdg_giftregistry>
+			<mdg_giftregistry_mysql4>
+				<class>Mdg_Giftregistry_Model_Mysql4</class>
+				<entities>
+					<table>mdg_giftregistry_entity</table>
+				</entities>
+				<item>
+					<table>mdg_giftregistry_item</table>
+				</item>
+				<type>
+					<table>mdg_giftregistry_type</table>
+				</type>
+			</mdg_giftregistry_mysql4>
 		</models>
 		<blocks>
 			<mdg_giftregistry>
