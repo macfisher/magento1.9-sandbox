@@ -1,4 +1,7 @@
 <?php
+/**
+ * CODE STILL NEEDS TO ADD ITEM AND TYPE TABLES
+*/
 $installer = $this;
 $installer->startSetup();
 
