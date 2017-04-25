@@ -38,8 +38,22 @@
 			<mdg_giftregistry_setup>
 				<setup>
 					<module>Mdg_Giftregistry</module>
+					<class>Mdg_Giftregistry_Model_Resource_Setup</class>
 				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
 			</mdg_giftregistry_setup>
+			<mdg_giftregistry_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</mdg_giftregistry_write>
+			<mdg_giftregistry_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</mdg_giftregistry_read>
 		</resources>
 	</global>
 </config>
