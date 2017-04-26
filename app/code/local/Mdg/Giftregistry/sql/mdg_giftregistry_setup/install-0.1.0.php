@@ -58,12 +58,12 @@ if ($installer->getConnection()->isTableExists($tableName) != true) {
 				array('website_id'))
 		->addIndex($installer->getIdxName('mdg_giftregistry/entity',
 			array('type_id')),
-				array('type_id')
+				array('type_id'))
 				->addForeignKey(
 					$installer->getFkName(
 						'mdg_giftregistry/entity',
 						'customer_id',
-						'customer_entity'
+						'customer_entity',
 						'entity_id'
 					),
 					'customer_id', $installer->getTable('customer/entity'),

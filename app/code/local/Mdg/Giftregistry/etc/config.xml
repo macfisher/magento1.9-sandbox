@@ -14,14 +14,16 @@
 			<mdg_giftregistry_mysql4>
 				<class>Mdg_Giftregistry_Model_Mysql4</class>
 				<entities>
-					<table>mdg_giftregistry_entity</table>
+					<entity>
+						<table>mdg_giftregistry_entity</table>
+					</entity>
+					<item>
+						<table>mdg_giftregistry_item</table>
+					</item>
+					<type>
+						<table>mdg_giftregistry_type</table>
+					</type>
 				</entities>
-				<item>
-					<table>mdg_giftregistry_item</table>
-				</item>
-				<type>
-					<table>mdg_giftregistry_type</table>
-				</type>
 			</mdg_giftregistry_mysql4>
 		</models>
 		<blocks>
