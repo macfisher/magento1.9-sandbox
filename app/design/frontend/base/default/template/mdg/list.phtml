@@ -1,0 +1,30 @@
+<?php
+$_collection = $this->getCustomerRegistries();
+?>
+
+<div class='customer-list'>
+	<ul>
+		<?php foreach ($_collection as $registry): ?>
+		<?php 
+			$url = $this->getUrl(
+				'giftregistry/view/view', 
+				array(
+					'_query' => array('registry_id' => $registry->getEntityId())
+				)
+			); 
+		?>
+			<li>
+				<h3><?php echo $registry->getEventName(); ?></h3>
+				<p><strong>
+					<?php echo $this->__("Event Date:"); ?>
+					<?php echo $registry->getEventDate(); ?>
+				</strong></p>
+				<p><strong>
+					<?php echo $this->__("Event Location:"); ?>
+					<?php echo $registry->getEventLocation(); ?>
+				</strong></p>
+				<a href="<?php echo $url; ?>"><?php echo $this->__("View Registry") ?></a>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+</div>

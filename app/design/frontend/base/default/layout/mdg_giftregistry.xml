@@ -1,5 +1,8 @@
 <layout version="0.1.0">
 	<mdg_giftregistry_index_index>
+		<reference name='content'>
+			<block name='giftregistry.list' type='mdg_giftregistry/list' template='mdg/list.phtml' as='giftregistry_list'/>
+		</reference>
 	</mdg_giftregistry_index_index>
 
 	<mdg_giftregistry_index_new>
