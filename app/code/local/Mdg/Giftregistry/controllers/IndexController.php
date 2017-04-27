@@ -60,8 +60,34 @@ extends Mage_Core_Controller_Front_Action
 	}
 
 	public function editPostAction() {
-		$this->loadLayout();
-		$this->renderLayout();
-		return $this;
+		try {
+			$data     	= $this->getRequest()->getParams();
+			$registry 	= Mage::getModel('mdg_giftregistry/entity');
+			$customer	= Mage::getSingleton('customer/session')->getCustomer();
+
+			if ($this->getRequest()->getPost() && !empty($data)) {
+				$registry->load($data['registry_id']);
+
+				if ($registry) {
+					$registry->updateRegistryData($customer, $data);
+					$registry->save();
+
+					$successMessage = Mage::helper('mdg_giftregistry')
+						->__("Registry Successfully Saved");
+
+					Mage::getSingleton('core/session')->addSuccess($successMessage);
+				} else {
+					throw new Exception("Invalid Registry Specified");
+				}
+			} else {
+				throw new Exception("Insufficient Data provided");
+			}
+		} catch (Mage_Core_Exception $e) {
+			Mage::getSingleton('core/session')->addError($e->getMessage());
+
+			$this->_redirect('*/*/');
+		}
+
+		$this->_redirect('*/*/');
 	}
 }
