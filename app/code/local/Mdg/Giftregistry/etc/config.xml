@@ -58,4 +58,15 @@
             </mdg_giftregistry_read>
         </resources>
     </global>
+    <frontend>
+    	<routers>
+    		<mdg_giftregistry>
+    			<use>standard</use>
+    			<args>
+    				<module>Mdg_Giftregistry</module>
+    				<frontName>giftregistry</frontName>
+    			</args>
+    		</mdg_giftregistry>
+    	</routers>
+    </frontend>
 </config>
