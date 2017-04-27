@@ -17,9 +17,24 @@ extends Mage_Core_Controller_Front_Action
 	}
 
 	public function deleteAction() {
-		$this->loadLayout();
-		$this->renderLayout();
-		return $this;
+		try {
+			$registryId = $this->getRequest()->getParam('registry_id');
+
+			if ($registryId && $this->getRequest()->getPost()) {
+				if ($registry = Mage::getModel('mdg_giftregistry/entity')->load($registryId)) {
+					$registry->delete();
+
+					$successMessage = Mage::helper('mdg_giftregistry')
+						->__("Gift registry has been successfully deleted");
+					Mage::getSingleton('core/session')->addSuccess($successMessage);
+				} else {
+					throw new Exception("There was a problem deleting the registry");
+				}
+			}
+		} catch (Exception $e) {
+			Mage::getSingleton('core/session')->addError($e->getMessage());
+			$this->_redirect('*/*/');
+		}
 	}
 
 	public function newAction() {
@@ -45,11 +60,10 @@ extends Mage_Core_Controller_Front_Action
 				$registry->save();
 
 				$successMessage = Mage::helper('mdg_giftregistry')
-					->__("Registry Successfully Created");
-
+					->__("Registry successfully created");
 				Mage::getSingleton('core/session')->addSuccess($successMessage);
 			} else {
-				throw new Exception("Insufficient Data provided");
+				throw new Exception("Insufficient data provided");
 			}
 		} catch (Mage_Core_Exception $e) {
 			Mage::getSingleton('core/session')->addError($e->getMessage());
@@ -73,18 +87,16 @@ extends Mage_Core_Controller_Front_Action
 					$registry->save();
 
 					$successMessage = Mage::helper('mdg_giftregistry')
-						->__("Registry Successfully Saved");
-
+						->__("Registry successfully saved");
 					Mage::getSingleton('core/session')->addSuccess($successMessage);
 				} else {
-					throw new Exception("Invalid Registry Specified");
+					throw new Exception("Invalid registry specified");
 				}
 			} else {
-				throw new Exception("Insufficient Data provided");
+				throw new Exception("Insufficient data provided");
 			}
 		} catch (Mage_Core_Exception $e) {
 			Mage::getSingleton('core/session')->addError($e->getMessage());
-
 			$this->_redirect('*/*/');
 		}
 
