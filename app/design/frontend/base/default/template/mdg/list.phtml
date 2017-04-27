@@ -1,30 +1,46 @@
 <?php
+const VIEW_ACTION   	= 'giftregistry/view/view';
+const EDIT_ACTION   	= 'giftregistry/index/edit';
+const DELETE_ACTION 	= 'giftregistry/index/delete';
+
 $_collection = $this->getCustomerRegistries();
 ?>
 
 <div class='customer-list'>
-	<ul>
-		<?php foreach ($_collection as $registry): ?>
-		<?php 
-			$url = $this->getUrl(
-				'giftregistry/view/view', 
-				array(
-					'_query' => array('registry_id' => $registry->getEntityId())
-				)
-			); 
-		?>
-			<li>
-				<h3><?php echo $registry->getEventName(); ?></h3>
-				<p><strong>
-					<?php echo $this->__("Event Date:"); ?>
-					<?php echo $registry->getEventDate(); ?>
-				</strong></p>
-				<p><strong>
-					<?php echo $this->__("Event Location:"); ?>
-					<?php echo $registry->getEventLocation(); ?>
-				</strong></p>
-				<a href="<?php echo $url; ?>"><?php echo $this->__("View Registry") ?></a>
-			</li>
-		<?php endforeach; ?>
-	</ul>
+	<?php if (!$_collection->count()): ?>
+		<h2><?php echo $this->__("You have no registries"); ?></h2>
+		<a href="<?php echo $this->getUrl('giftregistry/index/new'); ?>">
+			<?php echo $this->__("Click here to create new Gift Registry"); ?>
+		</a>
+	<?php else: ?>
+		<ul>
+			<?php foreach ($_collection as $registry): ?>
+				<?php
+					$registryIdQuery = array(
+						'_query' => array('registry_id' => $registry->getEntityId())
+					);
+				?>
+				<li>
+					<h3><?php echo $registry->getEventName(); ?></h3>
+					<p><strong>
+						<?php echo $this->__("Event Date:"); ?>
+						<?php echo $registry->getEventDate(); ?>
+					</strong></p>
+					<p><strong>
+						<?php echo $this->__("Event Location:"); ?>
+						<?php echo $registry->getEventLocation(); ?>
+					</strong></p>
+					<a href="<?php echo $this->getUrl(VIEW_ACTION, $registryIdQuery); ?>">
+						<?php echo $this->__("View Registry"); ?>
+					</a>
+					<a href="<?php echo $this->getUrl(EDIT_ACTION, $registryIdQuery); ?>">
+						<?php echo $this->__("Edit Registry"); ?>
+					</a>
+					<a href="<?php echo $this->getUrl(DELETE_ACTION, $registryIdQuery); ?>">
+						<?php echo $this->__("Delete Registry"); ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>	
+	<?php endif; ?>
 </div>
