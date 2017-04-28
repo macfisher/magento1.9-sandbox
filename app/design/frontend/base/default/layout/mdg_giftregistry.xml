@@ -33,8 +33,21 @@
 	</mdg_giftregistry_index_view>
 
 	<mdg_giftregistry_search_index>
+		<reference name='content'>
+			<block name='giftregistry.search' 
+				   type='core/template' 
+				   template='mdg/search.phtml' 
+				   as='giftregistry_search'
+			/>
+		</reference>
 	</mdg_giftregistry_search_index>
 
 	<mdg_giftregistry_search_results>
+		<reference name='content'>
+			<block name='giftregistry.results' 
+				   type='mdg_giftregistry/list' 
+				   template='mdg/list.phtml'
+			/>
+		</reference>
 	</mdg_giftregistry_search_results>	
 </layout>

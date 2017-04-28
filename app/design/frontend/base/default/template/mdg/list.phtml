@@ -1,9 +1,10 @@
 <?php
-const VIEW_ACTION   	= 'giftregistry/view/view';
-const EDIT_ACTION   	= 'giftregistry/index/edit';
-const DELETE_ACTION 	= 'giftregistry/index/delete';
+	const VIEW_ACTION   	= 'giftregistry/view/view';
+	const EDIT_ACTION   	= 'giftregistry/index/edit';
+	const DELETE_ACTION 	= 'giftregistry/index/delete';
 
-$_collection = $this->getCustomerRegistries();
+	$_collection 	= $this->getCustomerRegistries();
+	$helper      	= Mage::helper('mdg_giftregistry');
 ?>
 
 <div class='customer-list'>
@@ -33,12 +34,14 @@ $_collection = $this->getCustomerRegistries();
 					<a href="<?php echo $this->getUrl(VIEW_ACTION, $registryIdQuery); ?>">
 						<?php echo $this->__("View Registry"); ?>
 					</a>
-					<a href="<?php echo $this->getUrl(EDIT_ACTION, $registryIdQuery); ?>">
-						<?php echo $this->__("Edit Registry"); ?>
-					</a>
-					<a href="<?php echo $this->getUrl(DELETE_ACTION, $registryIdQuery); ?>">
-						<?php echo $this->__("Delete Registry"); ?>
-					</a>
+					<?php if ($helper->isRegistryOwner($registry->getCustomerId())): ?>
+						<a href="<?php echo $this->getUrl(EDIT_ACTION, $registryIdQuery); ?>">
+							<?php echo $this->__("Edit Registry"); ?>
+						</a>
+						<a href="<?php echo $this->getUrl(DELETE_ACTION, $registryIdQuery); ?>">
+							<?php echo $this->__("Delete Registry"); ?>
+						</a>
+					<?php endif; ?>
 				</li>
 			<?php endforeach; ?>
 		</ul>	
