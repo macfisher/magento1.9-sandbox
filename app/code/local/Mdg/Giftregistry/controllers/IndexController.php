@@ -3,12 +3,12 @@ class   Mdg_Giftregistry_IndexController
 extends Mage_Core_Controller_Front_Action
 {
 	public function preDispatch() {
-		if (Mage::getSingleton('customer/session')->authenticate($this)) {
+		/*if (Mage::getSingleton('customer/session')->authenticate($this)) {
 			$this->getResponse()
 				 ->setRedirect(Mage::helper('customer')->getLoginUrl());
 
 			$this->setFlag('', self::FLAG_NO_DISPATCH, true);
-		}
+		}*/
 	}
 
 	public function indexAction() {

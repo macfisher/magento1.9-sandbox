@@ -30,6 +30,13 @@
 	</mdg_giftregistry_index_edit>
 
 	<mdg_giftregistry_index_view>
+		<reference name='content'>
+			<block name='giftregistry.view' 
+				   type='core/template' 
+				   template='mdg/view.phtml'
+				   as='giftregistry_view'
+			/>
+		</reference>
 	</mdg_giftregistry_index_view>
 
 	<mdg_giftregistry_search_index>
